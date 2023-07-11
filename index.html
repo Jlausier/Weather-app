@@ -5,14 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather app</title>
     <script src="https://cdn.tailwindcss.com"></script>
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" 
+    crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/style.css">
-</head>
-<nav class="container mx-sm column-1"> that one</nav>
 
-<body class="container mx-auto columns-1">
-    <ul> this one</ul>
-    
+    <title> Weather App</title>
+</head>
+<body class="bg-dark">
+    <h1 class="flex text-light justify-content-center fs-2">Weather app for  convient weather forcast!</h1>
+    <main>
+        <section>
+            <div class="container mt-10 ml-10 ">
+          
+              <div class="row">
+                <div class="col-md-8 col-lg-6 col-xl-4">
+          
+                  <h3 class="mb-4 pb-2 fw-normal text-light fs-2">Check the weather forecast</h3>
+          
+                  <div class="input-group rounded mb-3">
+                    <input type="search" class="form-control rounded" placeholder="City" aria-label="Search"
+                      aria-describedby="search-addon" />
+                    <a href="#!" type="button">
+                      <span class="input-group-text border-0 fw-bold" id="search-addon">
+                        Search!
+                      </span>
+                    </a>
+                  </div>
+          
+                  <div class="mb-4 pb-2">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                        value="option1" checked />
+                      <label id= "celsius" class="form-check-label text-light" for="inlineRadio1">Celsius</label>
+                    </div>
+          
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                        value="option2" />
+                      <label id="Farenheit" class="form-check-label text-light" for="inlineRadio2">Farenheit</label>
+                    </div>
+                  </div>
+          
+                  <div class="card shadow-0 border ">
+                    <div class="card-body p-2 text-dark-emphasis fs-4 bg-info-subtle"> Orlando
+                    </div>
+                  </div>
+                  
+          
+                </div>
+                <div id="display-city" class=" text-light col-4 text-align-center fs-1  ml-20 mt-10 "> Dallas</div>
+                
+             </div>
+            
+          
+            </div>
+        </section>
+        
+            
+        
+    </main>
+    <footer id="images" class="container">
+        <div class="row justify-content-around mt-20">
+            <div id="animate" class="col-3 text-light">Image </div>
+            <div id="animate" class="col-3 text-light">Image</div>
+            <div id="animate" class="col-3 text-light">Image</div>
+            <div id="animate" class="col-3 text-light">Image</div>
+        </div>
+
+    </footer>
+   
+
+   
 </body>
 <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
 <script src="
