@@ -25,7 +25,7 @@
                   <h3 class="mb-4 pb-2 fw-normal text-light fs-2">Check the weather forecast</h3>
           
                   <div class="input-group rounded mb-3">
-                    <input id="input" type="search" class="form-control rounded" placeholder="City" aria-label="Search"
+                    <input id="city" type="search" class="form-control rounded" placeholder="City" aria-label="Search"
                       aria-describedby="search-addon" />
                     <a href="#!" type="button">
                       <span id="button" class="input-group-text border-0 fw-bold" id="search-addon">
@@ -33,20 +33,7 @@
                       </span>
                     </a>
                   </div>
-          
-                  <div class="mb-4 pb-2">
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                        value="option1" checked />
-                      <label id= "celsius" class="form-check-label text-light" for="inlineRadio1">Celsius</label>
-                    </div>
-          
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
-                        value="option2" />
-                      <label id="Farenheit" class="form-check-label text-light" for="inlineRadio2">Farenheit</label>
-                    </div>
-                  </div>
+        
           
                   <div class="card shadow-0 border ">
                     <div id="previous" class="card-body p-2 text-dark-emphasis fs-4 bg-info-subtle"> Orlando
@@ -57,15 +44,19 @@
                 </div>
                 <div id="display-city" class=" container-fluid text-center  text-light col-6  fs-1 ">
                   
-                    <div id="searched-city" class=" card p-2 m-5">Dallas</div>
+                    <div id="searched-city" class=" text-light bg-dark card p-2 m-5">Dallas</div>
                     <h2 id="temp"></h2>
                     <img src="https://openweathermap.org/img/wn/04n.png" id="icon">
                     <h2 id="description"></h2>
                     <h2 id="humidity"></h2>
-
-                    <div id="5-day" class= "">test</div>
                   
-                </div>
+
+                    <div id="future" class= "card bg-dark text-light col-4 fs-3">test</div>
+                    <h2 id="temp-2"></h2>
+                    <img src="https://openweathermap.org/img/wn/04n.png" id="icon-2">
+                    <h2 id="description-2"></h2>
+                    <h2 id="humidity-2"></h2></div>
+                
                 
              </div>
             
