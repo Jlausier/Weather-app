@@ -76,7 +76,7 @@ function displayFuture(){
     const {icon, description} = data.weather[0];
     const {temp, humidity}= data.main;
     const {date}= data.list.dt
-    data.forEach(element => {
+    data.forEach(date => {
         
     
        historyDiv =   document.createElement('div')
@@ -92,6 +92,8 @@ function displayFuture(){
        historyImg.id = "icon-2"
        historyDes.id = "description-2"
        historyHum.id = "humidity-2"
+
+       fiveDay.append(historyDiv, historyDate, historyTemp, historImg, historyDes, historyHum)
     });
     fiveDay.innerText =  + name;
     document.getElementById('date').innerText = date
