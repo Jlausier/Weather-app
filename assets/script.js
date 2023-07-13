@@ -167,7 +167,7 @@ storeHistory.push(city)
 // //function to display search history
 // // function to create buttons on search history
  function displayHistory(){
-    
+    listEl.innerHTML = ''
     for( var i = 0; i <storeHistory.length; i++){
         var history = storeHistory[i] 
         // storeHistory.push(history)
@@ -181,6 +181,7 @@ storeHistory.push(city)
         })
         
     }
+    
     
 }
 
