@@ -2,6 +2,7 @@
 body{
     background-size: cover;
     background-image: url(./weather.jpg) ;
+    max-height: 100vh;
     
 }
  .hide{
