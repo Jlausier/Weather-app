@@ -1,10 +1,12 @@
 
 body{
     background-size: cover;
-    background-image: url(./weather.jpg) ;
-    max-height: 100vh;
+    background-image: url(./weather.jpg);
+   max-width: fit-content;
+bac
     
 }
+
  .hide{
 display: none;
  }

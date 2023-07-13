@@ -172,7 +172,7 @@ storeHistory.push(city)
         var history = storeHistory[i] 
         // storeHistory.push(history)
         historyList = document.createElement('div')
-        historyList.setAttribute('class' ,'btn  shadow-0  p-2 text-dark-emphasis fs-4 bg-info-subtle m-4')
+        historyList.setAttribute('class' ,'btn  shadow-0  p-2 text-dark-emphasis fs-4 bg-info-subtle  w-2')
         historyList.innerText = history
         listEl.append(historyList)
         $(listEl).on('click', function(event){
