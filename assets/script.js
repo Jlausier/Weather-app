@@ -19,8 +19,9 @@ $(buttonEl).on('click',getWeather)
 
 function getWeather(event){
     event.preventDefault();
-
     var city = (document.getElementById('city').value.trim())
+    localStorage.setItem('city', JSON.stringify(city))
+ 
     fetch(
         "https://api.openweathermap.org/data/2.5/weather?q=" 
         + city 
@@ -44,77 +45,72 @@ function getWeather(event){
     document.getElementById('temp').innerText = temp +" °F"
     document.getElementById('description').innerText = description
     document.getElementById('humidity').innerText = "humidity: " + humidity;
-   
+   forcast()
+   displayHistory()
 
 }
     
 
 
 
-    
+
 
 // function to display 5 day forcast
-function forcast(){
-    
-    var city = (document.getElementById('city').value.trim())
- fetch(
+ function forcast(){
     
     
-
-    "https://api.openweathermap.org/data/2.5/forecast?q=" +
-     city +
-     "&units=imperial&appid=" +
-       myApi
- ).then((response) => {
-    return response.json();
-    
-  })
-  .then((data) => displayFuture(data));
-console.log(response);
-console.log(data);
-}
-
-
-
-function displayFuture(){
-    const {name} = data;
-    const {icon, description} = data.weather[0];
-    const {temp, humidity}= data.main;
-    const {date}= data.list.dt
-    
- let pastCity= []
-
-    for( var i = 0; i <data.length; i++){
-        var pastSearch = city;
-        pastCity.push({text: pastSearch})
-        historyDiv= document.createElement('div')
-        historyDate = document.createElement('h2')
-        historyTemp =  document.createElement('h2')
-        historyImg =  document.createElement('img')
-        historyDes =  document.createElement('h2')
-        historyHum =  document.createElement('h2')
-
+     fetch(
         
-       historyDiv.id = "future"
-       historyDate.id ="date"
-       historyTemp.id = "temp-2"
-       historyImg.id = "icon-2"
-       historyDes.id = "description-2"
-       historyHum.id = "humidity-2"
-
         
-       fiveDay.innerText =  + name;
-           document.getElementById('date').innerText = date
-           document.getElementById('icon-2').src = "https://openweathermap.org/img/wn/" + icon + ".png"
-           document.getElementById('temp-2').innerText = temp +" °F"
-           document.getElementById('description-2').innerText = description
-           document.getElementById('humidity-2').innerText = "humidity: " + humidity;
-
-        pastSearch.classList.add('btn, col-4, shadow-0 , p-2, text-dark-emphasis, fs-4, bg-info-subtle')
-        historyList.innerText = pastSearch
-        fiveDay.append(historyList)
-       
-    }
+    
+        "https://api.openweathermap.org/data/2.5/forecast?q=" 
+         + city 
+         + "&units=imperial&appid=" 
+          + myApi
+     ).then((response) => {
+        return response.json();
+        
+      })
+      .then((data) => function displayFuture(){
+        const {name} = data;
+        const {icon, description} = data.weather[0];
+        const {temp, humidity}= data.main;
+        const {date}= data.list.dt
+        
+     let pastCity= []
+    
+        for( var i = 0; i <data.length; i++){
+            var pastSearch = city;
+            pastCity.push({text: pastSearch})
+            historyDiv= document.createElement('div')
+            historyDate = document.createElement('h2')
+            historyTemp =  document.createElement('h2')
+            historyImg =  document.createElement('img')
+            historyDes =  document.createElement('h2')
+            historyHum =  document.createElement('h2')
+    
+            
+           historyDiv.id = "future"
+           historyDate.id ="date"
+           historyTemp.id = "temp-2"
+           historyImg.id = "icon-2"
+           historyDes.id = "description-2"
+           historyHum.id = "humidity-2"
+    
+            
+           fiveDay.innerText = name
+               document.getElementById('date').innerText = date
+               document.getElementById('icon-2').src = "https://openweathermap.org/img/wn/" + icon + ".png"
+               document.getElementById('temp-2').innerText = temp +" °F"
+               document.getElementById('description-2').innerText = description
+               document.getElementById('humidity-2').innerText = "humidity: " + humidity;
+            
+            pastSearch.classList.add('btn, col-4, shadow-0 , p-2, text-dark-emphasis, fs-4, bg-info-subtle')
+            historyDiv.innerText = pastSearch
+            fiveDay.append(historyDiv, historyDate, historyTemp, historyImg, historyDes, historyHum)
+           
+        }
+    });
 }
         
     
@@ -125,12 +121,12 @@ function displayFuture(){
 //        historyDes =  document.createElement('h2')
 //        historyHum =  document.createElement('h2')
 
-    //    historyDiv.id = "future"
-    //    historyDate.id ="date"
-    //    historyTemp.id = "temp-2"
-    //    historyImg.id = "icon-2"
-    //    historyDes.id = "description-2"
-    //    historyHum.id = "humidity-2"
+//        historyDiv.id = "future"
+//        historyDate.id ="date"
+//        historyTemp.id = "temp-2"
+//        historyImg.id = "icon-2"
+//        historyDes.id = "description-2"
+//        historyHum.id = "humidity-2"
 
 //        fiveDay.append(historyDiv, historyDate, historyTemp, historImg, historyDes, historyHum)
 //     });
@@ -149,15 +145,17 @@ let storeHistory = [];
 
 //function to display search history
 // function to create buttons on search history
-function displayHistory(){
+ function displayHistory(){
+    
     for( var i = 0; i <localStorage.length; i++){
-        var history = localStorage.key(i);
-        storeHistory.push({text: history})
+        var history = JSON.parse(localStorage.getItem(localStorage.key(i))) 
+        storeHistory.push(history)
         historyList = document.createElement('div')
-        history.classList.add('btn, col-4, shadow-0 , p-2, text-dark-emphasis, fs-4, bg-info-subtle')
+        // history.classList.add('btn, col-4, shadow-0 , p-2, text-dark-emphasis, fs-4, bg-info-subtle')
         historyList.innerText = history
         listEl.append(historyList)
         $(listEl).on('click', weatherAgain)
+        
     }
     function weatherAgain(event){
         event.preventDefault();
@@ -179,4 +177,5 @@ function displayHistory(){
 //function update search history
 
 // get history from local storage
-localStorage.setItem('city', JSON.stringify(city))
+
+displayHistory()
