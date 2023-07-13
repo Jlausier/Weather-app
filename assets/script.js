@@ -119,7 +119,7 @@ function futureDays(data){
        historyDes.innerText = description
        historyHum.innerText = "humidity: " + humidity;
         var historyContainer = document.createElement('div')
-        historyContainer.classList.add('card','col-2','align-items-center')
+        historyContainer.classList.add('card','col-2','align-items-center', 'p-2', 'm-2')
     //     pastSearch.classList.add('btn, col-4, shadow-0 , p-2, text-dark-emphasis, fs-4, bg-info-subtle')
     //     historyDiv.innerText = pastSearch
         historyContainer.append(historyDiv, historyDate, historyTemp, historyImg, historyDes, historyHum)
