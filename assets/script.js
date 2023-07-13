@@ -36,7 +36,8 @@ function getWeather(city){
       .then((data) => displayCurrent(data));
       forcast(city);
 
-      
+      weather.classList.remove('hide')
+      fiveDay.classList.remove('hide')
     
 }
 
@@ -44,7 +45,11 @@ function getWeather(city){
     const {name} = data;
     const {icon, description} = data.weather[0];
     const {temp, humidity}= data.main;
+     
+    let date  = dayjs().format("MM,DD,YYYY")
+
     weather.innerText =  name;
+    document.getElementById('date').innerText = date
     document.getElementById('icon').src = "https://openweathermap.org/img/wn/" + icon + ".png"
     document.getElementById('temp').innerText = temp +" °F"
     document.getElementById('description').innerText = description
@@ -75,14 +80,15 @@ function getWeather(city){
         
 function futureDays(data){
     console.log(data);
-    let pastCity= []
+    fiveDay.innerHTML = ""
+   
     
     for( var i = 7; i < data.list.length; i += 8){
         const {name}= data.city
         const {icon, description} = data.list[i].weather[0];
         const {temp, humidity}= data.list[i].main
         const {date} = data.list[i].dt_txt
-        
+        var day  = dayjs(date).format("MM , DD , YYYY")
         console.log(temp);
         console.log(humidity);
         console.log(icon);
@@ -98,25 +104,26 @@ function futureDays(data){
        var historyHum =  document.createElement('h2')
 
         
-       historyDiv.id = "future"
-       historyDate.id ="date"
-       historyTemp.id = "temp-2"
-       historyImg.id = "icon-2"
-       historyDes.id = "description-2"
-       historyHum.id = "humidity-2"
+       historyDiv.id = "future-" + i
+       historyDate.id ="date-" + i
+       historyTemp.id = "temp-" +i
+       historyImg.id = "icon-" + i
+       historyDes.id = "description-" + i
+       historyHum.id = "humidity-" + i
 
         
-       fiveDay.innerText = name
-       historyDate.innerText = date
+       historyDiv.innerText = name
+       historyDate.innerText = day
        historyImg.src = "https://openweathermap.org/img/wn/" + icon + ".png"
        historyTemp.innerText = temp +" °F"
        historyDes.innerText = description
        historyHum.innerText = "humidity: " + humidity;
-        
+        var historyContainer = document.createElement('div')
+        historyContainer.classList.add('card','col-2','align-items-center')
     //     pastSearch.classList.add('btn, col-4, shadow-0 , p-2, text-dark-emphasis, fs-4, bg-info-subtle')
     //     historyDiv.innerText = pastSearch
-        fiveDay.append(historyDiv, historyDate, historyTemp, historyImg, historyDes, historyHum)
-       
+        historyContainer.append(historyDiv, historyDate, historyTemp, historyImg, historyDes, historyHum)
+       fiveDay.append(historyContainer)
     }
 }
 //        historyDiv =   document.createElement('div')
@@ -174,7 +181,11 @@ storeHistory.push(city)
         })
         
     }
+    
 }
+
+
+
 //     function weatherAgain(event){
 //         event.preventDefault();
 

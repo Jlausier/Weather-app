@@ -1,2 +1,9 @@
 
-
+body{
+    background-size: cover;
+    background-image: url(./weather.jpg) ;
+    
+}
+ .hide{
+display: none;
+ }
